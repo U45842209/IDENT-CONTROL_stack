@@ -60,4 +60,4 @@ def http_error(error_code):
     return template("errors", error_code=error_code, error_description=error_description)
 
 
-run(host='localhost', port=8080)
+run(host='0.0.0.0', port=8080)
