@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fastapi
-    container_name: fastapi
+    container_name: bottle
     environment:
       PORT: 8080
     ports:
@@ -41,4 +41,3 @@ networks:
     ipam:
       config:
         - subnet: 172.20.0.0/16
-        - gateway: 172.20.0.1
