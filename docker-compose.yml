@@ -5,15 +5,15 @@ services:
     restart: unless-stopped
     container_name: mysql
     environment:
-      MYSQL_DATABASE: 'SAE410'
+      MYSQL_DATABASE: 'bottle'
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
       - '3306:3306'
     volumes:
       - my-db:/var/lib/mysql
-      - ./app/sae410.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - ./SQL/bottle.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     networks:
-      SAE41_network:
+      bottle_network:
         ipv4_address: 172.20.0.10
 
   fastapi:
@@ -22,12 +22,23 @@ services:
       dockerfile: Dockerfile.fastapi
     container_name: fastapi
     environment:
-      PORT: 8000
+      PORT: 8080
     ports:
-      - '8001:8000'
+      - '8080:8080'
     restart: unless-stopped
     depends_on:
       - db
     networks:
-      SAE41_network:
+      bottle_network:
         ipv4_address: 172.20.0.20
+
+# Names our volume
+volumes:
+  my-db:
+
+networks:
+  bottle_network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+        - gateway: 172.20.0.1
