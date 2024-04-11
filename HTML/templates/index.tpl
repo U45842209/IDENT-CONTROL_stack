@@ -37,6 +37,30 @@
         .container input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #a94442;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .info {
+            background-color: #d9edf7;
+            color: #31708f;
+            border: 1px solid #bce8f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +89,10 @@
 
             <input type="submit" value="Create User">
         </form>
+
+        %if message:
+            <div class="{{ message_type }}">{{ message }}</div>
+        %end
     </div>
 </body>
 </html>
