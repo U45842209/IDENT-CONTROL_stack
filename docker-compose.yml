@@ -35,11 +35,15 @@ services:
   cache:
     image: redis:6.2-alpine
     restart: always
+    container_name: cache
     ports:
       - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning --requirepass ${PASS}
     volumes:
       - cache:/data
+    networks:
+      bottle_network:
+        ipv4_address: 172.20.0.30
 
 volumes:
   my-db:
