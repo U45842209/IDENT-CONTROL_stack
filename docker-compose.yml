@@ -32,9 +32,18 @@ services:
       bottle_network:
         ipv4_address: 172.20.0.20
 
-# Names our volume
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${PASS}
+    volumes:
+      - cache:/data
+
 volumes:
   my-db:
+  cache:
 
 networks:
   bottle_network:

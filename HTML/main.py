@@ -1,8 +1,15 @@
 from classes import SQL_connect
-from bottle import route, run, template, SimpleTemplate, request
+from bottle import route, run, template, request
+import bottle_session
 import bottle
 import json
 import hashlib
+
+
+# https://pypi.org/project/bottle-session/
+app = bottle.app()
+plugin = bottle_session.SessionPlugin(cookie_lifetime=600)
+app.install(plugin)
 
 bottle.TEMPLATE_PATH.append(f"./templates/")
 print(f"Templates path : {bottle.TEMPLATE_PATH}")
