@@ -68,10 +68,10 @@
         <h2>Login</h2>
         <form action="/login" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username", pattern="^[a-z0-9]{6,10}$" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password", pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[#%{}@])[a-zA-Z0-9#%{}@]{6,15}$" required>
 
             <input type="submit" value="Login">
         </form>
@@ -79,13 +79,13 @@
         <h2>Register</h2>
         <form action="/register" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username", pattern="^[a-z0-9]{6,10}$" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password", pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[#%{}@])[a-zA-Z0-9#%{}@]{6,15}$" required>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email", pattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b" required>
 
             <input type="submit" value="Create User">
         </form>

@@ -59,3 +59,18 @@ class Mysql:
         except Exception as e:
             return e
 
+    def authenticate_user(self, username, password):
+        user_info = self.find_user(username)
+        if user_info and user_info[0][2] == password:  # Assuming password is stored securely (e.g., hashed)
+            return True
+        return False
+
+    def get_all_user_info(self):
+        try:
+            sql = "SELECT * FROM users"
+            self.sql_cursor.execute(sql)
+            myresult = self.sql_cursor.fetchall()
+            return myresult
+        except Exception as e:
+            return e
+

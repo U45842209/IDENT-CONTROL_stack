@@ -1,2 +1,7 @@
 bottle
 mysql-connector-python
+redis
+bottle-session
+bottle-redis
+python-dotenv
+PyJWT
